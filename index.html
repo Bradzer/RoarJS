@@ -13,60 +13,6 @@
     <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
 <![endif]-->
 
-<script src="dist/roar.min.js"></script>
-<script>
-/*
- * Custom demos
- */
-function demo3() {
-    var options = {
-        cancel: true,
-        cancelText: "cancel",
-        cancelCallBack: function (event) {
-            console.log("options.cancelCallBack");
-        },
-        confirm: true,
-        confirmText: "confirm",
-        confirmCallBack: function (event) {
-            console.log("options.confirmCallBack");
-        }
-    };
-    roar.default(
-        "demo 3",
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin a purus non turpis scelerisque molestie. Pellentesque id interdum nulla. Etiam nec ex porta, blandit felis eget, pulvinar turpis. Nam efficitur placerat nisl, ut tempor leo finibus eget. Praesent non dolor id purus scelerisque elementum ac eu enim. Cras euismod ipsum id mi malesuada, nec porttitor velit pulvinar. Proin hendrerit libero fringilla augue euismod, sit amet molestie dui dapibus. Mauris libero quam, bibendum et quam at, condimentum eleifend libero.",
-        options
-    );
-}
-function demo4() {
-    var options = {
-        cancel: false,
-        cancelText: "cancel",
-        cancelCallBack: function (event) {
-            console.log("options.cancelCallBack");
-        },
-        confirm: true,
-        confirmText: "confirm",
-        confirmCallBack: function (event) {
-            console.log("options.confirmCallBack");
-        }
-    };
-    roar.default("demo 4", "demo 4 show message", options);
-}
-function demo5() {
-    var options = {
-        cancel: true,
-        cancelText: "cancel button",
-        cancelCallBack: function (event) {
-            console.log("options.cancelCallBack");
-        },
-        confirm: true,
-        confirmText: "confirm button",
-        confirmCallBack: function (event) {
-            console.log("options.confirmCallBack");
-        }
-    };
-    roar.default("demo 5", "demo 5 show message", options);
-}
-</script>
+<script src="dist/bundle.js"></script>
 </body>
 </html>
