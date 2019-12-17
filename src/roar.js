@@ -19,9 +19,16 @@ const roar = (title, message, options) => {
         bounceIn: 'bounceIn'
     }
 
+    const alertTypes = {
+        nonModal: 'nonModal',
+        modal: 'modal',
+    }
+
     if (typeof options !== 'object') options = {}
 
     if (typeof options.animation !== 'string') options.animation = ''
+
+    if (typeof options.type !== 'string') options.type = ''
 
     if (!window.roarAlert) {
         var RoarObject = {
@@ -48,9 +55,12 @@ const roar = (title, message, options) => {
 
     // Define default options
     RoarObject.animation = animations.hasOwnProperty(options.animation) ? options.animation : animations.roarShow
+    RoarObject.type = alertTypes.hasOwnProperty(options.type) ? options.type : alertTypes.nonModal
     RoarObject.cancel = options.cancel !== undefined ? options.cancel : false;
     RoarObject.cancelText = options.cancelText !== undefined ? options.cancelText : 'Cancel';
     RoarObject.cancelCallBack = function (event) {
+        document.querySelector('.roar-alert-mask').removeEventListener('click', onClickOutsideAlertHandler)
+
         document.body.classList.remove('roar-open');
         window.roarAlert.element.style.display = 'none';
         // Cancel callback
@@ -67,6 +77,8 @@ const roar = (title, message, options) => {
     RoarObject.confirm = options.confirm !== undefined ? options.confirm : true;
     RoarObject.confirmText = options.confirmText !== undefined ? options.confirmText : 'Confirm';
     RoarObject.confirmCallBack = function (event) {
+        document.querySelector('.roar-alert-mask').removeEventListener('click', onClickOutsideAlertHandler)
+
         document.body.classList.remove('roar-open');
         window.roarAlert.element.style.display = 'none';
         // Confirm callback
@@ -190,6 +202,8 @@ const roar = (title, message, options) => {
     const onClickOutsideAlertHandler = (event) => {
         // Do NOT close next animated roar alert
         document.querySelector('.roar-alert-mask').removeEventListener('click', onClickOutsideAlertHandler)
+
+        if(RoarObject.type === 'modal') return true // do NOT close alert if type is modal
 
         document.body.classList.remove('roar-open');
         window.roarAlert.element.style.display = 'none';
