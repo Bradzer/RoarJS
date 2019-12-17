@@ -10,8 +10,8 @@
  * Copyright (c) 2018 Ciprian Popescu
  * Licensed GPLv3
  */
-function roar(title, message, options) {
-    'use strict';
+
+const roar = (title, message, options) => {
 
     // supported animations
     const animations = {
@@ -187,7 +187,7 @@ function roar(title, message, options) {
     window.roarAlert = RoarObject;
 
     // Callback function when clicking outside roar alert
-    function onClickOutsideAlertHandler(event) {
+    const onClickOutsideAlertHandler = (event) => {
         // Do NOT close next animated roar alert
         document.querySelector('.roar-alert-mask').removeEventListener('click', onClickOutsideAlertHandler)
 
@@ -202,3 +202,5 @@ function roar(title, message, options) {
         return true;
     }
 }
+
+export default roar;
