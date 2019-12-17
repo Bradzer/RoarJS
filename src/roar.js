@@ -11,7 +11,7 @@
  * Licensed GPLv3
  */
 
-const roar = () => {
+const showAlert = () => {
     let roarAlert;
 
     return (
@@ -197,7 +197,7 @@ const roar = () => {
             if(roarAlert.type === 'modal') return true // do NOT close alert if type is modal
 
             document.body.classList.remove('roar-open');
-            window.roarAlert.element.style.display = 'none';
+            roarAlert.element.style.display = 'none';
             // Cancel callback
             if (typeof options.cancelCallBack === 'function') {
                 options.cancelCallBack(event);
@@ -209,4 +209,6 @@ const roar = () => {
     })
 }
 
-export default roar;
+export const roar = showAlert()
+
+export default roar

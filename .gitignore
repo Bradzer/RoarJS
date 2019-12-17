@@ -5,3 +5,5 @@ test\.html
 node_modules
 
 src/myRoar\.js\.bak
+
+src/index\.js
